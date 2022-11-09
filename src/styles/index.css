@@ -5,3 +5,9 @@
 .search-category:hover{
     cursor: pointer !important;
 }
+
+.icon-carro{
+    width: 4rem;
+    height: auto;
+    object-fit: contain;
+}
