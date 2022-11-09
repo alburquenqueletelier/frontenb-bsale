@@ -15,28 +15,30 @@ document.addEventListener('DOMContentLoaded', async ()=>{
         console.log(data.slice(0,10));
     }
     lista.appendChild(allProducts);
-    const data = await get_categories();
+    const categories = await get_categories();
     
-    data.forEach(element=>{
+    categories.forEach(element=>{
         const listItem = document.createElement('li');
         listItem.classList.add('list-group-item', 'search-category');
         listItem.innerText = element.name;
         listItem.onclick = async () => {
-            const data = await get_products({search: element.id, by: "category"});
-            console.log(data);
+            const categories = await get_products({search: element.id, by: "category"});
+            console.log(categories);
         }
         lista.appendChild(listItem);
     })
     menu.appendChild(lista);
 
-    const products = await get_products(5);
-    const prueba = document.createElement('ul');
-    let largo = products.length > 10 ? 10 : products.length;
-    for (let i=0; i<largo; i++){
-        const listaPrueba = document.createElement('li');
-        listaPrueba.innerText = products[i].name;
-        prueba.appendChild(listaPrueba);
-    }
-    document.querySelector('#body').appendChild(prueba);
+    const products = await get_products();
+    const showProducts = main(products);
+    document.querySelector('#body').appendChild(showProducts);
+    // const prueba = document.createElement('ul');
+    // let largo = products.length > 10 ? 10 : products.length;
+    // for (let i=0; i<largo; i++){
+    //     const listaPrueba = document.createElement('li');
+    //     listaPrueba.innerText = products[i].name;
+    //     prueba.appendChild(listaPrueba);
+    // }
+    // document.querySelector('#body').appendChild(prueba);
     
 });
