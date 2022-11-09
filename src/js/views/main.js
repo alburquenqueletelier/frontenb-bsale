@@ -1,22 +1,14 @@
+import { productCard } from "../components/productCard.js";
 export const main = (data) => {
-    // if (!data) return <div>No se encontro el resultado :/ </div>
-    return (
-        <nav aria-label="...">
-            {data}
-            <ul class="pagination">
-                <li class="page-item disabled">
-                    <a class="page-link">Previous</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item active" aria-current="page">
-                    <a class="page-link" href="#">2</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
-                </li>
-            </ul>
-        </nav>
-    );
+    const containerCards = document.createElement('div');
+    containerCards.classList.add('row');
+    data.forEach(item=>{
+        let col = document.createElement('div');
+        col.classList.add('col');
+        let producto = productCard(item);
+        col.appendChild(producto);
+        containerCards.appendChild(col);
+    });
+    body.appendChild(containerCards);
+    return containerCards;
 };
-
