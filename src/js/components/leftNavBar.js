@@ -1,7 +1,10 @@
 import { get_products, get_categories } from "../api/apiGET.js";
+import { loading } from "../utils/utils.js";
 import { containerCards } from "./containerCards.js";
 
 export const leftNavBar = ()=>{
+    const navBar = document.createElement('div');
+    navBar.innerHTML = '<h4>Categorias</h4>';
     const collapse = document.createElement('nav');
     collapse.classList.add('navbar', 'navbar-expand-sm', 'sticky-top', 'mx-2');
 
@@ -18,11 +21,12 @@ export const leftNavBar = ()=>{
     allProducts.classList.add('nav-item', 'list-group-item', 'search-category'); //
     allProducts.innerText = 'Todos';
     allProducts.onclick = async () => {
-        const productsContainer = document.querySelector('#productsContainer');
-        productsContainer.innerHTML = "";
         let data = JSON.parse(localStorage.getItem('products')) || await get_products();
-        const showProducts = containerCards(data);
-        productsContainer.appendChild(showProducts);
+        loading('productsContainer', containerCards, data);
+        // const productsContainer = document.querySelector('#productsContainer');
+        // productsContainer.innerHTML = "";
+        // const showProducts = containerCards(data);
+        // productsContainer.appendChild(showProducts);
     }
     lista.appendChild(allProducts);
 
@@ -39,25 +43,13 @@ export const leftNavBar = ()=>{
         listItem.classList.add('list-group-item', 'nav-item', 'search-category');
         listItem.innerText = element.name;
         listItem.onclick = async () => {
-            const productsContainer = document.querySelector('#productsContainer');
-            productsContainer.innerHTML = `
-            <div class="d-flex justify-content-center">
-                <div class="spinner-border" role="status">
-                <span class="visually-hidden">Loading...</span>
-                </div>
-            </div>
-            `;
             let data = JSON.parse(localStorage.getItem('products')) || await get_products({search: element.id, by: "category"});
             data = data.filter(product => product.category == element.id);
-            const showProducts = containerCards(data);
-            productsContainer.innerHTML = "";
-            productsContainer.appendChild(showProducts);
-            // const categories = await get_products({search: element.id, by: "category"});
-            // console.log(categories);
-            console.log('pase por lista= ', element.id);
+            loading('productsContainer', containerCards, data);
         }
         lista.appendChild(listItem);
     })
     collapse.querySelector('div').appendChild(lista);
-    return collapse;
+    navBar.appendChild(collapse);
+    return navBar;
 };
