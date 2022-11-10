@@ -4,7 +4,7 @@ export const main = (data) => {
     containerCards.classList.add('row');
     data.forEach(item=>{
         let col = document.createElement('div');
-        col.classList.add('col');
+        col.classList.add('col-auto', 'my-1');
         let producto = productCard(item);
         col.appendChild(producto);
         containerCards.appendChild(col);
