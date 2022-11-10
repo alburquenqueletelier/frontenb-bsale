@@ -4,7 +4,7 @@ import {containerCards} from "../components/containerCards.js";
 import {leftNavBar} from "../components/leftNavBar.js";
 import { loading } from "../utils/utils.js";
 
-export const index = async ()=>{
+export const indexView = async ()=>{
 // document.addEventListener('DOMContentLoaded', async ()=>{
 loading('leftNav', leftNavBar);
 // const menu = document.querySelector('#left');

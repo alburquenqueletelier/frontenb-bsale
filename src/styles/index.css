@@ -20,6 +20,7 @@ header{
     box-shadow:  2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
+/* Icono de carro en carta producto */
 .icon-carro{
     width: 1.5rem;
     height: auto;
@@ -28,4 +29,11 @@ header{
 }
 .icon-carro:hover{
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+/* Icono de carrito */
+.cart-icon{
+    width: 3rem;
+    height: auto;
+    object-fit: contain;
 }

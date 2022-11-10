@@ -52,6 +52,5 @@ export const leftNavBar = async ()=>{
     })
     collapse.querySelector('div').appendChild(lista);
     navBar.appendChild(collapse);
-    console.log(navBar);
     return navBar;
 };

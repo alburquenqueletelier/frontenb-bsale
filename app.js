@@ -1,5 +1,5 @@
-import {index} from "./src/js/views/index.js";
+import {indexView} from "./src/js/views/index.js";
 
  document.addEventListener('DOMContentLoaded', async ()=>{
-    index();
+    indexView();
 });
