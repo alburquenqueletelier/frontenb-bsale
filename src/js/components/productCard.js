@@ -3,7 +3,13 @@ import { numToContable } from "../utils/utils.js";
 export const productCard = (data) => {
 
     function addToCart(id){
-        console.log(id);
+        let cart = JSON.parse(localStorage.getItem('cart'));
+        if (cart){
+            cart.push(id);
+            localStorage.setItem('cart', JSON.stringify(cart));
+        } else {
+            localStorage.setItem('cart', JSON.stringify([id]));
+        }
     };
 
     const card = document.createElement('div');

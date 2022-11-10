@@ -7,7 +7,7 @@ export const productsByCategory = (category, data) =>{
     return data.filter(product=>product.category == category);
 }
 
-export const loading = (tagID, callback, args)=>{
+export const loading = async (tagID, callback, args)=>{
     const componentTag = document.querySelector(`#${tagID}`);
     componentTag.innerHTML = `
     <div class="d-flex justify-content-center">
@@ -16,7 +16,7 @@ export const loading = (tagID, callback, args)=>{
         </div>
     </div>
     `;
-    const response = callback(args);
+    const response = await callback(args);
     componentTag.innerHTML = "";
     componentTag.appendChild(response);
 };

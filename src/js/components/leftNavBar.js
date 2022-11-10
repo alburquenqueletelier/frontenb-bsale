@@ -2,11 +2,12 @@ import { get_products, get_categories } from "../api/apiGET.js";
 import { loading } from "../utils/utils.js";
 import { containerCards } from "./containerCards.js";
 
-export const leftNavBar = ()=>{
+export const leftNavBar = async ()=>{
     const navBar = document.createElement('div');
+    navBar.classList.add('m-1', 'pt-2', 'sticky-top');
     navBar.innerHTML = '<h4 class="text-center">Categorias</h4>';
     const collapse = document.createElement('nav');
-    collapse.classList.add('navbar', 'navbar-expand-sm', 'sticky-top', 'mx-2', 'justify-content-center');
+    collapse.classList.add('navbar', 'navbar-expand-sm', 'mx-2', 'justify-content-center');
 
     collapse.innerHTML = `
     <button class="navbar-toggler mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,14 +35,14 @@ export const leftNavBar = ()=>{
     if (localStorage.getItem('categories')){
         categories = JSON.parse(localStorage.getItem('categories'));
     } else {
-        categories = get_categories();
+        categories = await get_categories();
         localStorage.setItem('categories', JSON.stringify(categories));
     }
     
     categories.forEach(element=>{
         const listItem = document.createElement('li');
         listItem.classList.add('list-group-item', 'nav-item', 'search-category');
-        listItem.innerText = element.name[0].toUpperCase() + element.name.substring(1);
+        listItem.innerText = element.name[0].toUpperCase() + element.name.substring(1); // Capitalize 
         listItem.onclick = async () => {
             let data = JSON.parse(localStorage.getItem('products')) || await get_products({search: element.id, by: "category"});
             data = data.filter(product => product.category == element.id);
@@ -51,5 +52,6 @@ export const leftNavBar = ()=>{
     })
     collapse.querySelector('div').appendChild(lista);
     navBar.appendChild(collapse);
+    console.log(navBar);
     return navBar;
 };
