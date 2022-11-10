@@ -8,7 +8,7 @@ export const productCard = (data) => {
 
     const card = document.createElement('div');
     card.classList.add('card');
-    card.style.width = '18rem';
+    card.style.width = '16rem';
     card.style.height = '100%';
 
     const image = document.createElement('img');
