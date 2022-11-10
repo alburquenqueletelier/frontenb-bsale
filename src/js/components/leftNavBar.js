@@ -4,9 +4,9 @@ import { containerCards } from "./containerCards.js";
 
 export const leftNavBar = ()=>{
     const navBar = document.createElement('div');
-    navBar.innerHTML = '<h4>Categorias</h4>';
+    navBar.innerHTML = '<h4 class="text-center">Categorias</h4>';
     const collapse = document.createElement('nav');
-    collapse.classList.add('navbar', 'navbar-expand-sm', 'sticky-top', 'mx-2');
+    collapse.classList.add('navbar', 'navbar-expand-sm', 'sticky-top', 'mx-2', 'justify-content-center');
 
     collapse.innerHTML = `
     <button class="navbar-toggler mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,7 +41,7 @@ export const leftNavBar = ()=>{
     categories.forEach(element=>{
         const listItem = document.createElement('li');
         listItem.classList.add('list-group-item', 'nav-item', 'search-category');
-        listItem.innerText = element.name;
+        listItem.innerText = element.name[0].toUpperCase() + element.name.substring(1);
         listItem.onclick = async () => {
             let data = JSON.parse(localStorage.getItem('products')) || await get_products({search: element.id, by: "category"});
             data = data.filter(product => product.category == element.id);
