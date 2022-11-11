@@ -38,7 +38,7 @@ export const productCard = (data) => {
             <h5 class="card-text text-danger">${data.discount > 0 ? ('%' + data.discount) : ""}</h5>
             <h5 class="card-text">${data.discount > 0 ? numToContable(finalPrice) : ""}</h5>
             <button type="button" class="btn">
-                <img src="https://cdn-icons-png.flaticon.com/512/3082/3082031.png" alt="logo-carro" class="icon-carro" />
+                <img src="https://cdn.pixabay.com/photo/2017/07/08/19/32/symbol-2485372_960_720.png" alt="logo-carro" class="icon-carro" />
             </button>
         </div>
     `;

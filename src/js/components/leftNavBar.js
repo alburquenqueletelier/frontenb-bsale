@@ -5,7 +5,12 @@ import { containerCards } from "./containerCards.js";
 export const leftNavBar = async ()=>{
     const navBar = document.createElement('div');
     navBar.classList.add('m-1', 'pt-2', 'sticky-top');
-    navBar.innerHTML = '<h4 class="text-center">Categorias</h4>';
+    navBar.innerHTML = `
+        <button type="button" class="btn d-flex m-auto" id="toCartView">
+            <img src="https://cdn-icons-png.flaticon.com/512/3082/3082031.png" class="cart-icon" alt="Carro" />
+        </button>
+        <h4 class="text-center bg-white rounded pb-1" style="color: #000046">Categorias</h4>
+    `;
     const collapse = document.createElement('nav');
     collapse.classList.add('navbar', 'navbar-expand-sm', 'mx-2', 'justify-content-center');
 
@@ -17,7 +22,7 @@ export const leftNavBar = async ()=>{
     `;
 
     const lista = document.createElement('ul');
-    lista.classList.add('navbar-nav', 'flex-column', 'my-auto', 'list-group');
+    lista.classList.add('navbar-nav', 'flex-column', 'list-group');
     const allProducts = document.createElement('li');
     allProducts.classList.add('nav-item', 'list-group-item', 'search-category'); //
     allProducts.innerText = 'Todos';

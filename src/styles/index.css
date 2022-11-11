@@ -5,9 +5,8 @@
     font-family: 'Oswald', sans-serif;
 }
 
-header{
-    background-color: black;
-    background: linear-gradient(#000046, #1cb5e0); 
+header, #leftNav{
+    background: linear-gradient(to right, #000046, #1cb5e0); 
 }
 
 .search-category:hover{
@@ -28,7 +27,9 @@ header{
     z-index: 9;
 }
 .icon-carro:hover{
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    width: 1.6rem;
+    box-shadow: 4px 4px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
 }
 
 /* Icono de carrito */
@@ -37,3 +38,9 @@ header{
     height: auto;
     object-fit: contain;
 }
+
+#toCartView img:hover{
+    box-shadow:  4px 4px 2px 1px rgba(0, 0, 0, 0.2);
+    /* border: 1px solid salmon; */
+}
+
