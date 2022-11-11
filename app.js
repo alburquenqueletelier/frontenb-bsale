@@ -1,5 +1,5 @@
 import {indexView} from "./src/js/views/index.js";
-// import {cartView} 
+import {cartView} from "./src/js/views/cart.js";
 
  document.addEventListener('DOMContentLoaded', async ()=>{
     if (history.state){

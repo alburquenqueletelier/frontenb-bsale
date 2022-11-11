@@ -9,6 +9,10 @@ header, #leftNav{
     background: linear-gradient(to right, #000046, #1cb5e0); 
 }
 
+.amount-product{
+    font-size: 1.8rem;
+}
+
 .search-category:hover{
     cursor: pointer !important;
     box-shadow:  2px 2px 2px 1px rgba(0, 0, 0, 0.2);

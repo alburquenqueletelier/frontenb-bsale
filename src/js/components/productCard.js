@@ -3,16 +3,16 @@ import { toast } from "./toast.js";
 
 export const productCard = (data) => {
 
-    function addToCart(id) {
+    function addToCart(product) {
         let cart = JSON.parse(localStorage.getItem('cart'));
         if (cart) {
-            if (cart.filter(product=>product.id == id).length == 0){
-                cart = [...cart, {id:id, amount:1}];
+            if (cart.filter(item=>item.id == product.id).length == 0){
+                cart = [...cart, {product:product, amount:1}];
                 localStorage.setItem('cart', JSON.stringify(cart));
                 toast(data);
             }
         } else {
-            localStorage.setItem('cart', JSON.stringify([{id:id, amount:1}]));
+            localStorage.setItem('cart', JSON.stringify([{product:product, amount:1}]));
             toast(data);
         };
     };
@@ -43,6 +43,6 @@ export const productCard = (data) => {
         </div>
     `;
     card.appendChild(bodyCard);
-    bodyCard.querySelector('button').onclick = () => addToCart(data.id);
+    bodyCard.querySelector('button').onclick = () => addToCart(data);
     return card;
 };

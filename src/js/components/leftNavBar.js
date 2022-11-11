@@ -1,6 +1,7 @@
 import { get_products, get_categories } from "../api/apiGET.js";
 import { loading } from "../utils/utils.js";
 import { containerCards } from "./containerCards.js";
+import { cartView } from "../views/cart.js";
 
 export const leftNavBar = async ()=>{
     const navBar = document.createElement('div');
@@ -11,6 +12,9 @@ export const leftNavBar = async ()=>{
         </button>
         <h4 class="text-center bg-white rounded pb-1" style="color: #000046">Categorias</h4>
     `;
+    navBar.querySelector('button').onclick = ()=>{
+        cartView();
+    };
     const collapse = document.createElement('nav');
     collapse.classList.add('navbar', 'navbar-expand-sm', 'mx-2', 'justify-content-center');
 
