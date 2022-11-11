@@ -22,8 +22,10 @@ export const leftNavBar = async ()=>{
     allProducts.classList.add('nav-item', 'list-group-item', 'search-category'); //
     allProducts.innerText = 'Todos';
     allProducts.onclick = async () => {
+        const url = new URL(window.location);
         let data = JSON.parse(localStorage.getItem('products')) || await get_products();
         loading('productsContainer', containerCards, data);
+        history.pushState({page: 'index', load: {tag:'productsContainer', functionCall: 'containerCards', args: data}}, '');
         // const productsContainer = document.querySelector('#productsContainer');
         // productsContainer.innerHTML = "";
         // const showProducts = containerCards(data);
@@ -47,6 +49,7 @@ export const leftNavBar = async ()=>{
             let data = JSON.parse(localStorage.getItem('products')) || await get_products({search: element.id, by: "category"});
             data = data.filter(product => product.category == element.id);
             loading('productsContainer', containerCards, data);
+            history.pushState({page: 'index', load: {tag:'productsContainer', functionCall: 'containerCards', args: data}}, '');
         }
         lista.appendChild(listItem);
     })
