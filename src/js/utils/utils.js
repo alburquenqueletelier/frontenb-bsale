@@ -7,8 +7,8 @@ export const productsByCategory = (category, data) =>{
     return data.filter(product=>product.category == category);
 }
 
-export const loading = async (tagID, callback, args)=>{
-    const componentTag = document.querySelector(`#${tagID}`);
+export const loading = async (tag, callback, args)=>{
+    const componentTag = document.querySelector(`#${tag}`);
     componentTag.innerHTML = `
     <div class="d-flex justify-content-center">
         <div class="spinner-border" role="status">
