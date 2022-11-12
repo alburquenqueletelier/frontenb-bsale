@@ -25,7 +25,7 @@ export const searchForm = ()=>{
         if(products.length > 0){
             loading('productsContainer',containerCards, products);
         } else {
-            console.log('no se encontro el producto');
+            document.querySelector('#productsContainer').innerHTML = `No tenemos el producto ${search} :( `;
         }
     }
     return form;
