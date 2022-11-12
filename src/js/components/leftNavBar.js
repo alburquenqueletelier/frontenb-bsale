@@ -13,6 +13,7 @@ export const leftNavBar = async ()=>{
         <h4 class="text-center bg-white rounded pb-1" style="color: #000046">Categorias</h4>
     `;
     navBar.querySelector('button').onclick = ()=>{
+        history.pushState({page: 'cart', load: {tag:'main', functionCall: 'cartView', args: null}}, '');
         cartView();
     };
     const collapse = document.createElement('nav');
@@ -31,7 +32,6 @@ export const leftNavBar = async ()=>{
     allProducts.classList.add('nav-item', 'list-group-item', 'search-category'); //
     allProducts.innerText = 'Todos';
     allProducts.onclick = async () => {
-        const url = new URL(window.location);
         let data = JSON.parse(localStorage.getItem('products')) || await get_products();
         loading('productsContainer', containerCards, data);
         history.pushState({page: 'index', load: {tag:'productsContainer', functionCall: 'containerCards', args: data}}, '');
