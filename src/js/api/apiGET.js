@@ -7,11 +7,19 @@ export const get_categories = async ({search: value, by: attribute} = {}) => { /
     // const resp = await fetch(apiUrl+'category' +(id ? `?id=${id}` : "") + (name ? `?name=${name}` : "")); 
     let resp, data;
     if (attribute && value){
-        resp = await fetch(apiUrl+`category?${attribute}=${value}`);
-        data = await resp.json();
+        try{
+            resp = await fetch(apiUrl+`category?${attribute}=${value}`);
+            data = await resp.json();
+        } catch (error){
+            console.log(error);
+        }
     } else {
-        resp = await fetch(apiUrl+'category');
-        data = await resp.json();
+        try{
+            resp = await fetch(apiUrl+'category');
+            data = await resp.json();
+        } catch(error){
+            console.log(error);
+        }
     }
     return data;
 };
@@ -23,11 +31,19 @@ export const get_products = async ({search: value, by: attribute} = {}) =>{
     // category = category ? category : "";
     let resp, data;
     if (value && attribute){
-        resp = await fetch(apiUrl + `product?${attribute}=${value}`);
-        data = await resp.json();
+        try{
+            resp = await fetch(apiUrl + `product?${attribute}=${value}`);
+            data = await resp.json();
+        } catch (error) {
+            console.log(error);
+        }
     } else {
-        resp = await fetch(apiUrl+'product'); 
-        data = await resp.json();
+        try{
+            resp = await fetch(apiUrl+'product'); 
+            data = await resp.json();
+        } catch (error){
+            console.log(error);
+        }
     }
     return data;
 };
