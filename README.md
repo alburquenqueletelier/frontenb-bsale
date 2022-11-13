@@ -3,6 +3,7 @@
 Frontend de ecommerce que consiste en una single web page con dos vistas:
 - index, que muestra un listado de productos que puedes filtrar mediante la barra de categoría o por nombre. 
 - cart, que muestra el listado de productos agregados al carrito y te permite aumentar/disminuir o quitar productos, junto con un detalle de la compra.
+Utiliza localstorage para consistencia de datos.
 
 Puedes visitar el demo [aquí](https://ecommerce-bsale.vercel.app/)
 
@@ -52,6 +53,8 @@ get_products({search: value, attribute: string})
 |-------------------|---------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | object (optional) | {search: value(any), by: attribute(string)} | Busca productos según argumentos y retorna un arreglo con los valores. Puedes buscar por atributo id, name o category. Si no se indica argumento devuelve todos los productos. |
 
+**Importante: hay un limite de consultas diarias a la base de datos. La aplicación utiliza localstorage para almacenar la información y evita así volver a consumir la API. Recomiendo mantener este enfoque**
+
  - Components
 
 Carpeta con las funciones para generar el contenido. Al ser invocadas retornar código HTML listo para ser anexado al DOM exceptuando el component toast.js que genera el HTML directamente en el contenedor correspondiente.
@@ -95,3 +98,6 @@ No es menester usar esta herramienta, puedes modificar el DOM como te plazca per
 ## Licencia
 
 Open source. <span style="color:blue">Desarrollado por **Baal**</span>.
+Contacto:
+alburquenque.letelier@gmail.com
++56979577547
