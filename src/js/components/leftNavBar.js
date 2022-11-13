@@ -44,7 +44,12 @@ export const leftNavBar = async ()=>{
 
     var categories = "";
     if (localStorage.getItem('categories')){
-        categories = JSON.parse(localStorage.getItem('categories'));
+        try{
+            categories = JSON.parse(localStorage.getItem('categories'));
+        } catch {
+            categories = await get_categories();
+            localStorage.setItem('categories', JSON.stringify(categories));
+        }
     } else {
         categories = await get_categories();
         localStorage.setItem('categories', JSON.stringify(categories));
