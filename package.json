@@ -12,5 +12,8 @@
     "'bsale']"
   ],
   "author": "Bryan Alburquenque",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "vercel": "^28.4.17"
+  }
 }
