@@ -13,7 +13,7 @@ export const containerCart = ()=>{
             containerCards.appendChild(card);
         });
         const bill = document.createElement('div');
-        bill.classList.add('col-auto');
+        bill.classList.add('col', 'd-flex', 'flex-column', 'justify-content-center');
         bill.innerHTML = `
             <h3>Detalle Compra</h3>
             <ul class="list-group"></ul>

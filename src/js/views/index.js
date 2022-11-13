@@ -25,7 +25,12 @@ export const indexView = async (state)=>{
     if (state){
         products = state;
     } else if (localStorage.getItem('products')){
-        products = JSON.parse(localStorage.getItem('products'));
+        try{
+            products = JSON.parse(localStorage.getItem('products'));
+        } catch {
+            products = await get_products();
+            localStorage.setItem('products', JSON.stringify(products));
+        }
     } else {
         products = await get_products();
         localStorage.setItem('products', JSON.stringify(products));

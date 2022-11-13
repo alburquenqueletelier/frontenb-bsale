@@ -6,7 +6,7 @@ export const productCard = (data) => {
     function addToCart(product) {
         let cart = JSON.parse(localStorage.getItem('cart'));
         if (cart) {
-            if (cart.filter(item=>item.id == product.id).length == 0){
+            if (cart.filter(item=>item.product.id == product.id).length == 0){
                 cart = [...cart, {product:product, amount:1}];
                 localStorage.setItem('cart', JSON.stringify(cart));
                 toast(data);

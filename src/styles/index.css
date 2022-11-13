@@ -48,3 +48,9 @@ header, #leftNav, footer{
     /* border: 1px solid salmon; */
 }
 
+@media only screen and (max-width: 634px){
+    .card{
+        max-width: 30rem;
+        width: 75vw !important;
+    }
+}
